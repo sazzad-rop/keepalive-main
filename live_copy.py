@@ -69,14 +69,18 @@ root.title("Teams Keep-Active App")
 tk.Label(root, text="Start Time (HH:MM)").grid(row=0, column=0, padx=10, pady=5)
 start_hour_entry = tk.Entry(root, width=3)
 start_hour_entry.grid(row=0, column=1)
+start_hour_entry.insert(0, "07")
 start_minute_entry = tk.Entry(root, width=3)
 start_minute_entry.grid(row=0, column=2)
+start_minute_entry.insert(0, "00")
 
 tk.Label(root, text="End Time (HH:MM)").grid(row=1, column=0, padx=10, pady=5)
 end_hour_entry = tk.Entry(root, width=3)
 end_hour_entry.grid(row=1, column=1)
+end_hour_entry.insert(0, "17")
 end_minute_entry = tk.Entry(root, width=3)
 end_minute_entry.grid(row=1, column=2)
+end_minute_entry.insert(0, "00")
 
 tk.Button(root, text="Start", command=start_monitoring).grid(row=2, column=0, columnspan=3, pady=10)
 
