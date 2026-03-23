@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": ".",
+			"name": "KeepServerAlive"
+		},
+		{
+			"path": "../nps-serverCheck",
+			"name": "NPS-ServerCheck"
+		}
+	],
+	"settings": {
+		"github.copilot.chat.agent.autoFix": true,
+		"powershell.cwd": "KeepServerAlive"
+	}
+}
