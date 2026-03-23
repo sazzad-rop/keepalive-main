@@ -10,6 +10,7 @@
 		}
 	],
 	"settings": {
-		"github.copilot.chat.agent.autoFix": true
+		"github.copilot.chat.agent.autoFix": true,
+		"powershell.cwd": "KeepAlive"
 	}
 }

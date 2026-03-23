@@ -83,6 +83,19 @@ def start_monitoring():
         start_minute = int(start_minute_entry.get())
         end_hour = int(end_hour_entry.get())
         end_minute = int(end_minute_entry.get())
+        
+        # Validate hours and minutes
+        if not (0 <= start_hour <= 23) or not (0 <= start_minute <= 59):
+            messagebox.showerror("Error", "Start time: hours must be 0-23, minutes must be 0-59.")
+            return
+        if not (0 <= end_hour <= 23) or not (0 <= end_minute <= 59):
+            messagebox.showerror("Error", "End time: hours must be 0-23, minutes must be 0-59.")
+            return
+        
+        # Validate that end_time > start_time
+        if end_hour < start_hour or (end_hour == start_hour and end_minute <= start_minute):
+            messagebox.showerror("Error", "End time must be after start time.")
+            return
     except ValueError:
         messagebox.showerror("Error", "Please enter valid numbers for hours and minutes.")
         return
