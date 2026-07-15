@@ -279,7 +279,14 @@ try:
     root.after_idle(root.attributes, '-topmost', False)
     
     root.mainloop()
-    
+
+except KeyboardInterrupt:
+    log_error("Application interrupted by user.")
+    try:
+        root.quit()
+    except Exception:
+        pass
+
 except Exception as e:
     log_error(f"Critical error: {e}")
     messagebox.showerror("Error", f"Failed to start application: {e}")
