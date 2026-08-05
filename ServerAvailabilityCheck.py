@@ -49,8 +49,8 @@ def simulate_activity():
     except Exception as e:
         log_error(f"Error simulating activity: {e}")
 
-# Background thread to keep Teams active
-def keep_teams_active(start_time, end_time, interval=60):
+# Background thread to keep the server active
+def keep_server_active(start_time, end_time, interval=60):
     while True:
         try:
             now = datetime.now().time()
@@ -58,7 +58,7 @@ def keep_teams_active(start_time, end_time, interval=60):
                 simulate_activity()
             time.sleep(interval)
         except Exception as e:
-            log_error(f"Error in keep_teams_active: {e}")
+            log_error(f"Error in keep_server_active: {e}")
             time.sleep(interval)
 
 # Function to start the background thread
@@ -82,9 +82,9 @@ def start_monitoring():
         messagebox.showerror("Error", "Please enter valid hours (0-23) and minutes (0-59)")
         return
 
-    t = threading.Thread(target=keep_teams_active, args=(start_time, end_time), daemon=True)
+    t = threading.Thread(target=keep_server_active, args=(start_time, end_time), daemon=True)
     t.start()
-    messagebox.showinfo("Started", f"Server Keep-Alive running from {start_hour}:{start_minute:02d} to {end_hour}:{end_minute:02d}")
+    messagebox.showinfo("Started", f"ServerAvailabilityCheck running from {start_hour}:{start_minute:02d} to {end_hour}:{end_minute:02d}")
     hide_window()
 
 # System tray icon
@@ -164,7 +164,7 @@ def save_schedule():
 try:
     # Create Tkinter GUI
     root = tk.Tk()
-    root.title("Server Keep-Alive App")
+    root.title("ServerAvailabilityCheck")
     root.geometry("500x580")
     root.resizable(False, False)
     
@@ -201,7 +201,7 @@ try:
     scheduled_dates = "\n".join(all_dates)
     
     # Title
-    title_label = tk.Label(root, text="Server Keep-Alive Console", font=("Arial", 12, "bold"))
+    title_label = tk.Label(root, text="ServerAvailabilityCheck Console", font=("Arial", 12, "bold"))
     title_label.pack(padx=10, pady=10)
     
     tk.Label(root, text="─" * 60, foreground="gray").pack(padx=10)
@@ -270,7 +270,7 @@ try:
     tk.Button(button_frame, text="Exit", command=root.quit, bg="red", fg="white", width=15).pack(side="left", padx=5)
 
     # System tray icon
-    icon = Icon("ServerKeepAlive", create_image(), "Server Keep-Alive")
+    icon = Icon("ServerAvailabilityCheck", create_image(), "ServerAvailabilityCheck")
     icon.menu = Menu(MenuItem("Quit", on_quit))
     
     # Bring window to front
